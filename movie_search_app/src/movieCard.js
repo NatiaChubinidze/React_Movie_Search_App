@@ -1,22 +1,34 @@
 import React from "react";
-import './style.css';
+import "./style.css";
 
-function MovieCard({movie}){
-    return (
-         <div className="card"  >
-            <img className="card--image"
-                src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-                alt={movie.title + ' poster'}
-                />
-            <div className="card--content">
-            <h3 className="card--title">{movie.title}</h3>
-            <p><small>RELEASE DATE: {movie.release_date}</small></p>
-            <p><small>RATING: {movie.vote_average}</small></p>
-            <p className="card--desc">{movie.overview}</p>
-            </div>
-
-        </div>
-    )
+function MovieCard(props) {
+  return (
+    <div className="card">
+      <button
+        className="btn btn-primary col-1 details"
+        onClick={() => {
+          props.toggleVisibility(false);
+        }}
+      >
+        See Details
+      </button>
+      <img
+        className="card--image"
+        src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${props.movie.poster_path}`}
+        alt={props.movie.title + " poster"}
+      />
+      <div className="card--content">
+        <h3 className="card--title">{props.movie.title}</h3>
+        <p>
+          <small>RELEASE DATE: {props.movie.release_date}</small>
+        </p>
+        <p>
+          <small>RATING: {props.movie.vote_average}</small>
+        </p>
+        <p className="card--desc">{props.movie.overview}</p>
+      </div>
+    </div>
+  );
 }
 
 export default MovieCard;
